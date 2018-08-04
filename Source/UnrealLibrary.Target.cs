@@ -9,6 +9,9 @@ public class UnrealLibraryTarget : TargetRules
 	{
 		Type = TargetType.Game;
 
-		ExtraModuleNames.AddRange( new string[] { "UnrealLibrary" } );
+		ExtraModuleNames.AddRange(new string[] {
+            "UnrealLibrary",
+            "TableManager"
+        });
 	}
 }

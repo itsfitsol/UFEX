@@ -4,10 +4,14 @@
 	"Category": "",
 	"Description": "",
 	"Modules": [
-		{
-			"Name": "UnrealLibrary",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		}
+    {
+      "Name": "UnrealLibrary",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Name": "TableManager",
+      "Type":  "Runtime"
+    }
 	]
 }

@@ -9,6 +9,9 @@ public class UnrealLibraryEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 
-		ExtraModuleNames.AddRange( new string[] { "UnrealLibrary" } );
-	}
+        ExtraModuleNames.AddRange(new string[] {
+            "UnrealLibrary",
+            "TableManager"
+        });
+    }
 }
