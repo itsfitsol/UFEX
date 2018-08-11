@@ -1,0 +1,25 @@
+{
+	"FileVersion" : 3,
+	"Version" : 1,
+	"VersionName" : "0.1",
+	"FriendlyName" : "UFEX",
+	"Description" : "Unreal Framework EXtension",
+	"Category" : "Framework",
+	"CreatedBy" : "Hansol Kim",
+	"CreatedByURL" : "https://github.com/itsfitsol",
+	"DocsURL" : "https://github.com/itsfitsol/UFEX",
+	"MarketplaceURL" : "",
+	"SupportURL" : "",
+	"EnabledByDefault" : true,
+	"CanContainContent" : false,
+	"IsBetaVersion" : true,
+	"Installed" : false,
+	"Modules" :
+	[
+		{
+			"Name" : "UFEX",
+			"Type" : "Runtime",
+			"LoadingPhase" : "Default"
+		}
+	]
+}
