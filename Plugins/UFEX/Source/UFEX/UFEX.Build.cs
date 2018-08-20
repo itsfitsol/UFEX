@@ -13,21 +13,21 @@ namespace UnrealBuildTool.Rules
 
 			PrivateIncludePaths.AddRange(
 				new string[] {
-				}
+                }
 				);
 
 			PublicDependencyModuleNames.AddRange(
 				new string[]
 				{
-					"Core"
-				}
+					"Core",
+                    "CoreUObject",
+                    "Engine"
+                }
 				);
 
 			PrivateDependencyModuleNames.AddRange(
 				new string[]
 				{
-                    "CoreUObject",
-                    "Engine"
 				}
 				);
 
@@ -36,6 +36,8 @@ namespace UnrealBuildTool.Rules
 				{
 				}
 				);
-		}
+
+            PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+        }
 	}
 }
