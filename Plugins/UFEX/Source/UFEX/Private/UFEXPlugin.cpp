@@ -4,12 +4,17 @@
 #include "Modules/ModuleManager.h"
 #include "IUFEXPlugin.h"
 
+#include "DataTableManager.h"
+
 
 class FUFEXPluginImpl : public IUFEXPlugin
 {
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+
+public:
+	virtual UDataTableManager* GetDataTableManager() override;
 };
 
 IMPLEMENT_MODULE(FUFEXPluginImpl, UFEXPlugin )
@@ -18,15 +23,24 @@ IMPLEMENT_MODULE(FUFEXPluginImpl, UFEXPlugin )
 
 void FUFEXPluginImpl::StartupModule()
 {
-	// This code will execute after your module is loaded into memory (but after global variables are initialized, of course.)
+	// To create singleton instances
+	GetDataTableManager();
 }
 
 
 void FUFEXPluginImpl::ShutdownModule()
 {
-	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
-	// we call this function before unloading the module.
 }
 
+UDataTableManager* FUFEXPluginImpl::GetDataTableManager()
+{
+	if (!IsValid(DataTableMgr))
+	{
+		DataTableMgr = NewObject<UDataTableManager>();
+		DataTableMgr->Initialize();
+	}
+
+	return DataTableMgr;
+}
 
 

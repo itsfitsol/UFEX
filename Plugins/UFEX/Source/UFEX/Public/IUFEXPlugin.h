@@ -36,5 +36,13 @@ public:
 	{
 		return FModuleManager::Get().IsModuleLoaded("UFEX");
 	}
-};
 
+public:
+	
+	virtual class UDataTableManager* GetDataTableManager() = 0;
+
+protected:
+
+	UPROPERTY(Transient)
+	class UDataTableManager* DataTableMgr;
+};
