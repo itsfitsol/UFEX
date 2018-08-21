@@ -8,7 +8,15 @@ public class UFEXSample : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(
+            new string[] 
+            {
+                "Core",
+                "CoreUObject",
+                "Engine",
+                "InputCore",
+                "UFEX"
+            });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
