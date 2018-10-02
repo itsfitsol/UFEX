@@ -16,6 +16,7 @@ UDataTableManager::UDataTableManager()
 
 void UDataTableManager::Initialize()
 {
+	// TODO: Initialize something..
 	bIsInitialized = true;
 }
 

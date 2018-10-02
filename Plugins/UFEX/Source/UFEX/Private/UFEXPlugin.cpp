@@ -24,6 +24,7 @@ IMPLEMENT_MODULE(FUFEXPluginImpl, UFEXPlugin )
 void FUFEXPluginImpl::StartupModule()
 {
 	// To create singleton instances
+	// Need lazy initialization??
 	GetDataTableManager();
 }
 
