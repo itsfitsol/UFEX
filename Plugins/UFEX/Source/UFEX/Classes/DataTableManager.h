@@ -17,11 +17,20 @@ public:
 
 	void Initialize();
 
+	/** For the basic test to get data */
+	void TestAddDataTable(const FName& TableName, class UDataTable* Table);
+
+	const struct FTableRowBase* const GetData(const FName& TableName, const FName& DataName) const;
+
 private:
 
 	bool bIsInitialized;
 
-	/** Static methods */
+	/** Actual data table map */
+	UPROPERTY()
+	TMap<FName, UDataTable*> TableMap;
+
+	/** Statics */
 public:
 	static UDataTableManager* Get();
 
