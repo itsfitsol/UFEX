@@ -7,6 +7,12 @@ DEFINE_LOG_CATEGORY_STATIC(UFEXTextLog, Log, Log);
 
 void UUFEXSampleGameInstance::Init()
 {
+	/**
+	 * TODO
+	 * - Templatize UDataTableManager::GetData()
+	 * - Move soft referencing into UDataTableManager
+	 */
+
 	UDataTable* TestDataTable = nullptr;
 	if (SoftTestDataTable.IsPending())
 	{
