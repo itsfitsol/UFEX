@@ -43,6 +43,6 @@ public:
 
 protected:
 
-	UPROPERTY(Transient)
+	UPROPERTY()
 	class UDataTableManager* DataTableMgr;
 };

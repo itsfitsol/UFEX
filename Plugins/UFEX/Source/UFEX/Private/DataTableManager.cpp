@@ -21,6 +21,11 @@ void UDataTableManager::Initialize()
 	bIsInitialized = true;
 }
 
+bool UDataTableManager::IsInitialized() const
+{
+	return bIsInitialized;
+}
+
 void UDataTableManager::TestAddDataTable(const FName& TableName, UDataTable* Table)
 {
 	if (!Table || !TableName.IsNone())
@@ -42,22 +47,12 @@ UDataTableManager* UDataTableManager::Get()
 	if (!UDataTableManager::Instance.IsValid())
 	{
 		UDataTableManager::Instance = IUFEXPlugin::Get().GetDataTableManager();
-		if (!UDataTableManager::Instance->bIsInitialized)
-		{
-			UDataTableManager::Instance->Initialize();
-		}
+	}
+
+	if (!UDataTableManager::Instance->IsInitialized())
+	{
+		UDataTableManager::Instance->Initialize();
 	}
 
 	return UDataTableManager::Instance.Get();
-}
-
-const FTableRowBase* const UDataTableManager::GetData(const FName& TableName, const FName& DataName) const
-{
-	const UDataTablePtr* TablePtr = TableMap.Find(TableName);
-	if (TablePtr && (*TablePtr))
-	{
-		return (*TablePtr)->FindRow<FTableRowBase>(DataName, TEXT(""), true);
-	}
-
-	return nullptr;
 }

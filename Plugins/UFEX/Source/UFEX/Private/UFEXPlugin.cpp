@@ -17,14 +17,14 @@ public:
 	virtual UDataTableManager* GetDataTableManager() override;
 };
 
-IMPLEMENT_MODULE(FUFEXPluginImpl, UFEXPlugin )
+IMPLEMENT_MODULE(FUFEXPluginImpl, UFEXPlugin)
 
 
 
 void FUFEXPluginImpl::StartupModule()
 {
 	// To create singleton instances
-	GetDataTableManager();
+	//GetDataTableManager();
 }
 
 

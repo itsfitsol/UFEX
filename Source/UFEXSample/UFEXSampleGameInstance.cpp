@@ -9,21 +9,19 @@ void UUFEXSampleGameInstance::Init()
 {
 	/**
 	 * TODO
-	 * - Templatize UDataTableManager::GetData()
 	 * - Move soft referencing into UDataTableManager
 	 */
 
-	UDataTable* TestDataTable = nullptr;
 	if (SoftTestDataTable.IsPending())
 	{
-		TestDataTable = SoftTestDataTable.LoadSynchronous();
+		SoftTestDataTable.LoadSynchronous();
 	}
 	
 	static const FName TestTableName(TEXT("Test"));
-	UDataTableManager::Get()->TestAddDataTable(TestTableName, TestDataTable);
+	UDataTableManager::Get()->TestAddDataTable(TestTableName, SoftTestDataTable.Get());
 
 	static const FName TestDataName(TEXT("RowData00"));
-	const FTableRowBase* const TestData = UDataTableManager::Get()->GetData(TestTableName, TestDataName);
+	const FTestDataTableRow* const TestData = UDataTableManager::GetTableRow<FTestDataTableRow>(TestTableName, TestDataName);
 		
 	if (TestData)
 	{

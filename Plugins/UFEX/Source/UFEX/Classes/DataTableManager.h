@@ -17,11 +17,11 @@ public:
 
 	void Initialize();
 
+	bool IsInitialized() const;
+
 	/** For the basic test to get data */
 	void TestAddDataTable(const FName& TableName, class UDataTable* Table);
-
-	const struct FTableRowBase* const GetData(const FName& TableName, const FName& DataName) const;
-
+	
 private:
 
 	bool bIsInitialized;
@@ -32,6 +32,38 @@ private:
 
 	/** Statics */
 public:
+
+	/** Get data directly from specific data table */
+	template <typename TTableRow>
+	static const TTableRow* const GetTableRow(const FName& TableName, const FName& RowName)
+	{
+		const UDataTable* const DataTable = UDataTableManager::GetDataTable(TableName);
+		if (IsValid(DataTable))
+		{
+			return DataTable->FindRow<TTableRow>(RowName, TEXT("UFEX::UDataTableManager::GetTableRow()"));
+		}
+
+		return nullptr;
+	}
+
+	/** Get specific data table */
+	static const UDataTable* const GetDataTable(const FName& TableName)
+	{
+		UDataTableManager* Manager = UDataTableManager::Get();
+		if (!IsValid(Manager))
+		{
+			return nullptr;
+		}
+
+		UDataTable** DataTablePtr = Manager->TableMap.Find(TableName);
+		if (!DataTablePtr)
+		{
+			return nullptr;
+		}
+
+		return *DataTablePtr;
+	}
+
 	static UDataTableManager* Get();
 
 private:
