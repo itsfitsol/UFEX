@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "DataTableManager.generated.h"
 
 
@@ -20,7 +21,7 @@ public:
 	bool IsInitialized() const;
 
 	/** For the basic test to get data */
-	void TestAddDataTable(const FName& TableName, class UDataTable* Table);
+	void TestAddDataTable(const FName& TableName, UDataTable* Table);
 	
 private:
 
@@ -35,7 +36,8 @@ public:
 
 	/** Get data directly from specific data table */
 	template <typename TTableRow>
-	static const TTableRow* const GetTableRow(const FName& TableName, const FName& RowName)
+	static const typename TEnableIf<TIsDerivedFrom<TTableRow, FTableRowBase>::IsDerived, TTableRow>::Type* const 
+		GetTableRow(const FName& TableName, const FName& RowName)
 	{
 		const UDataTable* const DataTable = UDataTableManager::GetDataTable(TableName);
 		if (IsValid(DataTable))

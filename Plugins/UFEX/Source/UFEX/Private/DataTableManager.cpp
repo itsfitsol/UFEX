@@ -1,10 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "DataTableManager.h"
-#include "Engine/DataTable.h"
 #include "IUFEXPlugin.h"
-
-using UDataTablePtr = UDataTable*;
 
 DEFINE_LOG_CATEGORY_STATIC(UFEXLog, Log, Log);
 
