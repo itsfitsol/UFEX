@@ -11,15 +11,8 @@ void UUFEXSampleGameInstance::Init()
 	 * TODO
 	 * - Move soft referencing into UDataTableManager
 	 */
-
-	if (SoftTestDataTable.IsPending())
-	{
-		SoftTestDataTable.LoadSynchronous();
-	}
 	
 	static const FName TestTableName(TEXT("Test"));
-	UDataTableManager::Get()->TestAddDataTable(TestTableName, SoftTestDataTable.Get());
-
 	static const FName TestDataName(TEXT("RowData00"));
 	const FTestDataTableRow* const TestData = UDataTableManager::GetTableRow<FTestDataTableRow>(TestTableName, TestDataName);
 		

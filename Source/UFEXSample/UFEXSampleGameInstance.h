@@ -26,8 +26,4 @@ class UFEXSAMPLE_API UUFEXSampleGameInstance : public UGameInstance
 	
 public:
 	virtual void Init() override;
-
-public:
-	UPROPERTY(EditDefaultsOnly)
-	TSoftObjectPtr<UDataTable> SoftTestDataTable;
 };

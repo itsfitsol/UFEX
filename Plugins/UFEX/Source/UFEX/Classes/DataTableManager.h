@@ -19,9 +19,6 @@ public:
 	void Initialize();
 
 	bool IsInitialized() const;
-
-	/** For the basic test to get data */
-	void TestAddDataTable(const FName& TableName, UDataTable* Table);
 	
 private:
 

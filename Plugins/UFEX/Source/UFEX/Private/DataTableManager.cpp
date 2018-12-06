@@ -2,6 +2,7 @@
 
 #include "DataTableManager.h"
 #include "IUFEXPlugin.h"
+#include "DataTableSettings.h"
 
 DEFINE_LOG_CATEGORY_STATIC(UFEXLog, Log, Log);
 
@@ -15,28 +16,25 @@ UDataTableManager::UDataTableManager()
 
 void UDataTableManager::Initialize()
 {
+	if (bIsInitialized)
+	{
+		return;
+	}
+
+	TableMap.Reset();
+	
+	const TArray<FLoadingSetup>& LoadingSetups = UDataTableSettings::Get()->LoadingSetups;
+	for (const auto& Setup : LoadingSetups)
+	{
+		TableMap.Add(Setup.Name, Setup.Resource.LoadSynchronous());
+	}
+
 	bIsInitialized = true;
 }
 
 bool UDataTableManager::IsInitialized() const
 {
 	return bIsInitialized;
-}
-
-void UDataTableManager::TestAddDataTable(const FName& TableName, UDataTable* Table)
-{
-	if (!Table || !TableName.IsNone())
-	{
-		return;
-	}
-
-	// Check if the table is valid as an Asset managed by Unreal.
-	check(Table->IsValidLowLevel());
-
-	if (!TableMap.Contains(TableName))
-	{
-		TableMap.Add(TableName, Table);
-	}
 }
 
 UDataTableManager* UDataTableManager::Get()
